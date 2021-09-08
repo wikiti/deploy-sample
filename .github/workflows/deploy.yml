@@ -31,4 +31,6 @@ jobs:
         run: echo TODO Upload to S3
         
       - name: Push git tag
-        run: echo TODO push git tag
+        run: |
+          git tag -a "`timestamp_tag`" -m "Push to production"
+          git push --tags
