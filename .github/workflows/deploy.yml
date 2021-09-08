@@ -30,11 +30,6 @@ jobs:
       - name: Upload to S3
         run: echo TODO Upload to S3
         
-      - uses: actions-ecosystem/action-push-tag@v1
-        with:
-          tag: ${{ steps.bump-semver.outputs.new_version }}
-          message: '${{ steps.bump-semver.outputs.new_version }}: PR #${{ github.event.pull_request.number }} ${{ github.event.pull_request.title }}'
-
       - name: Push git tag
         run: |
           git config user.name "${GITHUB_ACTOR}"
