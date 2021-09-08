@@ -1,1 +1,1 @@
-# deploy-sample
+# Deploy sample
