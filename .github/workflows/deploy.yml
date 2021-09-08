@@ -2,20 +2,16 @@
 
 name: CI
 
-# Controls when the workflow will run
 on:
-  # Triggers the workflow on push or pull request events but only for the master branch
   push:
     branches: [ master ]
 
-  # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
 
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
-  build:
-    runs-on: ubuntu-latest
+  deploy-prod:
+    runs-on: 'ubuntu-latest'
+    environment: 'production'
     steps:
       - uses: actions/checkout@v2
 
@@ -28,22 +24,6 @@ jobs:
       - name: Update git revision 
         run: yarn install
 
-  deploy-staging:
-    runs-on: 'ubuntu-latest'
-    environment: 'staging'
-    needs: build
-    steps:
-      - name: Build application
-        run: yarn run build-staging
-
-      - name: Upload to S3
-        run: echo TODO Upload to S3
-
-  deploy-prod:
-    runs-on: 'ubuntu-latest'
-    environment: 'production'
-    needs: [build, deploy-staging]
-    steps:
       - name: Build application
         run: yarn run build
 

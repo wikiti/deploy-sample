@@ -1,0 +1,4 @@
+{
+  "sample": "Sample",
+  "version": "<% GIT_REVISION %>"
+}
