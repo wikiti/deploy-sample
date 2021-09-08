@@ -1,0 +1,12 @@
+{
+  "name": "deploy-sample",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:wikiti/deploy-sample.git",
+  "author": "Daniel <wikiti.doghound@gmail.com>",
+  "license": "MIT",
+  "scripts": {
+    "build": "echo prod-build",
+    "build-staging": "echo prod-build"
+  }
+}
