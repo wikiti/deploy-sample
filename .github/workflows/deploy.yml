@@ -15,26 +15,5 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Update git revision 
-        run: |
-          REVISION=`git log -n 1 --pretty=format:"%H"`
-          sed -i -e "s/<% GIT_REVISION %>/$REVISION/g" .env.production
-          sed -i -e "s/<% GIT_REVISION %>/$REVISION/g" public/manifest.json
-
-      - name: Update git revision 
-        run: yarn install
-
-      - name: Build application
-        run: yarn run build
-
-      - name: Upload to S3
-        run: echo TODO Upload to S3
-
-      - name: Push git tag
-        run: |
-          git config user.name "${GITHUB_ACTOR}"
-          git config user.email "${GITHUB_ACTOR}@users.noreply.github.com"
-
-          timestamp=`date +%Y-%m-%d_%H%M%S`
-          git tag -a "$timestamp" -m "Push to production"
-          git push --tags
+      - name: Run deploy script
+        run: ./deploy.sh
